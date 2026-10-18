@@ -28,4 +28,23 @@ public class Train {
 		}
 		return false;
 	}
+	
+	public boolean deletSeat(int seatNumber) {
+		if(!Seat.isValid(seatNumber)) {
+			return false;
+		}
+		Seat seat2 = seats[Seat.getRow(seatNumber) - 1][Seat.getColumn(seatNumber) - 1];
+		if(seat2.isEmpty()) {
+			seat2.setPassengerName(null);
+			return true;
+		}
+		return false;
+	}
+	public void deleteAllSeat() {
+		for(int i = 0; i < seats.length; i++) {
+			for(int j = 0; j < seats[i].length; j++) {
+				seats[i][j].setPassengerName(null);
+			}
+		}
+	}
 }
